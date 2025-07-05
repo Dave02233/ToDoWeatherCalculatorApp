@@ -2,91 +2,28 @@ import { useState } from 'react';
 import ListItem from './components/ListItem'
 import styles from './ToDoList.module.css';
 
-[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[PROBLEMONE CON LA CLASSE, ELIMINARE GLI ELEMENTI __]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 class toDoListItem {
     
     constructor(title = 'Titolo', description = 'Descrizione', creationDate = new Date(), expirationDate, priority = 'Bassa') {
-        this._title = title;
-        this._description = description;
-        this._creationDate = creationDate;
+        this.title = title;
+        this.description = description;
+        this.creationDate = creationDate;
         const expDate = new Date(creationDate);
         expDate.setDate(expDate.getDate() + 7);
-        this._expirationDate = expDate;
-        this._priority = priority;
-        this._id = generateRandomID();
+        this.expirationDate = expDate;
+        this.priority = priority;
+        this.id = generateRandomID();
     }
 
-    //Setter & Getters
+    //Getters
 
-    // Title
-    set title(newTitle) {
-        if (typeof newTitle !== 'string') {
-            throw new TypeError('title deve essere una stringa');
-        }
-        this._title = newTitle;
-    }
-    get title() {
-        return this._title;
-    }
-
-    // Description
-    set description(newDescription) {
-        if (typeof newDescription !== 'string') {
-            throw new TypeError('description deve essere una stringa');
-        }
-        this._description = newDescription;
-    }
-    get description() {
-        return this._description;
-    }
-
-    // CreationDate
-    set creationDate(newCreationDate) {
-        if (!(newCreationDate instanceof Date)) {
-            throw new TypeError('creationDate deve essere un oggetto Date');
-        }
-        this._creationDate = newCreationDate;
-    }
-    get creationDate() {
-        return this._creationDate;
-    }
-
-    // ExpirationDate
-    set expirationDate(newExpirationDate) {
-        if (!(newExpirationDate instanceof Date)) {
-            throw new TypeError('expirationDate deve essere un oggetto Date');
-        }
-        this._expirationDate = newExpirationDate;
-    }
-    get expirationDate() {
-        return this._expirationDate;
-    }
-
-    // Priority
-    set priority(newPriority) {
-        if (typeof newPriority !== 'string') {
-            throw new TypeError('priority deve essere una stringa');
-        }
-        this._priority = newPriority;
-    }
-    get priority() {
-        return this._priority;
-    }
-
-    // Unique ID
-
-    get id() {
-        return this._id;
-    }
-
-    //
 
     // Methods
 
     isExpired() {
         const now = new Date();
-        return this._expirationDate < now;
+        return this.expirationDate < now;
     }
 
 }
@@ -133,20 +70,30 @@ function ToDoList (props) {
     setToDoListItems((prevToDoListItems) =>
       prevToDoListItems.map((item) =>
         item.id === id  
-            ?{ ...item, ...newData, _id: id } // mantenere id originale
+            ?{ ...item, ...newData } // mantenere id originale
             : item
       )
     );
   } 
 
+  
+  // Elimina un elemento tramite ID
+    const deleteData = (id) => {
+        setToDoListItems(prevToDoListItems => 
+            prevToDoListItems.filter(utente => utente.id !== id)
+        )
+    } 
+
 
   return (
     <>
-        <button onClick={handleClickAddToDo}>Aggiungi un evento</button>
-        <div>
+        <div className={styles.buttonContainer}>
+            <button className={styles.addToDoItem} onClick={handleClickAddToDo}>Aggiungi un evento</button>
+        </div>
+        <div className={styles.ToDoList}>
             {
                 toDoListItems.length > 0
-                ? toDoListItems.map((listItem) => <ListItem key={listItem.id} data={listItem} changeData={changeData}/> )
+                ? toDoListItems.map((listItem) => <ListItem key={listItem.id} data={listItem} changeData={changeData} deleteData={deleteData} /> )
                 : <p>Nessun evento in programma</p>
             }
         </div>

@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from './ListItem.module.css'
 
-[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[PROBLEMONE CON LA CLASSE, ELIMINARE GLI ELEMENTI __]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 
-
-function ListItem ({ data, changeData}) {
+function ListItem ({ data, changeData, deleteData}) {
     const [editState, setEditState] = useState(false);
     const [newData, setNewData] = useState(data);
 
@@ -15,6 +13,12 @@ function ListItem ({ data, changeData}) {
             changeData(newData.id, newData);
         }
         setEditState(!editState);
+        console.log(newData)
+    }
+
+
+    const handleClickDelete = () => {
+        deleteData(newData.id)
     }
 
 
@@ -40,7 +44,7 @@ function ListItem ({ data, changeData}) {
         }))
     }
 
-        const handleCreationDateChange = ({ target }) => {
+    const handleCreationDateChange = ({ target }) => {
         setNewData(prev => ({
             ...prev,
             creationDate: new Date(target.value),
@@ -62,25 +66,31 @@ function ListItem ({ data, changeData}) {
         }))
     }
 
+    const isExpired = () => {
+        const now = new Date();
+        //console.log('Verifica scadenza →', newData.expirationDate, '<', now, '=', newData.expirationDate < now);
+        return newData.expirationDate < now;
+    };
+
     useEffect(() => {
         setNewData(data);
     }, [data]);
 
     return (
-        <div>
+        <div className={styles.ListItem}>
             <header>
                 { editState 
-                    ? <input onChange={handleTitleChange} value={newData?.title || ''} />
+                    ? <input onChange={handleTitleChange} name='Title' value={newData?.title || ''} />
                     : <h1>{newData?.title || ''}</h1>
                 }
             </header>
             <section>
                 { editState
-                    ? <textarea onChange={handleDescriptionChange} value={newData?.description || ''} />
+                    ? <textarea onChange={handleDescriptionChange} name='description' value={newData?.description || ''} />
                     : <p>{newData?.description || ''}</p>
                 }
+                <hr />
                 <section>
-                    <h3>Date</h3>
                     {editState ? (
                         <>
                             <label>
@@ -101,12 +111,19 @@ function ListItem ({ data, changeData}) {
                             </label>
                         </>
                     ) : (
-                        <p>{newData?.creationDate ? newData.creationDate.toLocaleDateString() : ''} - {newData?.expirationDate ? newData.expirationDate.toLocaleDateString() : ''}</p>
+                        <>
+                            <p>{newData?.creationDate ? 'Creazione: ' + newData.creationDate.toLocaleDateString() : ''} </p>
+                            <br /> 
+                            <p>{newData?.expirationDate ? 'Scadenza: ' + newData.expirationDate.toLocaleDateString() : ''}</p>
+                            <br />
+                            <h3 className={isExpired() ? styles.expired : styles.notExpired}>{'Status: ' + (isExpired() ? 'Scaduto' : 'In scadenza')}</h3>
+                        </>
                     )}
                 </section>
             </section>
             <footer>
                 <button onClick={handleClickEdit}>{editState ? 'Salva' : 'Modifica'}</button>
+                <button onClick={handleClickDelete}>Elimina</button>
                 <h6>Unique ID: {newData?.id || ''}</h6>
             </footer>
         </div>

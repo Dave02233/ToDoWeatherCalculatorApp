@@ -1,0 +1,115 @@
+.ListItem {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 20%;
+
+    padding: 0.6rem;
+    margin: 0;
+
+    border-radius: 5px;
+    border-top: 3px solid rgb(184, 184, 185);
+    border-left: 3px solid rgb(184, 184, 185);
+    border-bottom: 3px solid rgb(99, 122, 122);
+    border-right: 3px solid rgb(99, 122, 122);
+
+    input, textarea {
+        width: 90%;
+        border: 1px solid rgb(146, 183, 160);
+        padding: 0.5rem;
+        font-size: 1rem;
+        
+    }
+
+    header{
+        width: 90%;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        h1{
+            margin: 0;
+        }
+
+
+    }
+
+    section{
+        width: 90%;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+
+        h3 {
+            margin: 0.6rem 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        section {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    footer{
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        margin-top: 1rem;
+
+        justify-content: flex-end;
+        align-items: center;
+
+        gap: 1.3rem;
+
+        button{
+            width: 66%;
+            height: 1.5rem;
+
+            font-size: 1rem;
+            box-shadow: 1px 2px 1px rgb(146, 183, 160);
+
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            padding: 0;
+        }
+
+        h6{
+            margin: 0;
+            margin-top: 0.8rem;
+        }
+    }
+}
+
+
+.notExpired {
+    padding: 0.3rem;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(160, 231, 160);
+    border-radius: 5px;
+}
+
+.expired {
+    padding: 0.3rem;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: rgb(230, 113, 113);
+    color: antiquewhite;
+    text-shadow: 1px 1px 1px gray;
+    border-radius: 5px;
+}

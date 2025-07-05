@@ -15,7 +15,7 @@ function App () {
   
 
   // Weather
-
+  
 
   // Calculator
 
@@ -26,7 +26,7 @@ function App () {
       <header>
         <h1>To Do - Weather - Calculator</h1>
       </header>
-      <ToDoList />
+      <ToDoList /> 
     </>  
   );
 }

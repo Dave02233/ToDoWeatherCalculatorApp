@@ -1,0 +1,47 @@
+.buttonContainer{
+    width: 100%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.ToDoList{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.addToDoItem{
+
+    justify-self: center;
+    align-self: center;
+
+    margin: 1rem 0;
+
+    height: 2rem;
+
+    border-radius: 15px;
+    border-top: 2px solid rgb(170, 174, 174);
+    border-left: 2px solid rgb(170, 174, 174);
+    border-right: 2px solid rgb(106, 138, 138);
+    border-bottom: 2px solid rgb(106, 138, 138);
+
+    transition: all 0.3s ease-in-out;
+}
+
+.addToDoItem:hover{
+    background-color: rgb(143, 144, 143);
+    text-shadow: 0 0 5px rgb(56, 55, 55);
+    color: aliceblue;
+    border-color: invert;
+}

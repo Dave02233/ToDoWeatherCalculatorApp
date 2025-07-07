@@ -21,7 +21,6 @@ export default async function fetchMeteoData(latitude, longitude, timezone, fore
     timezone = encodeURIComponent('Europe/Berlin');
     
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min&hourly=temperature_2m,relative_humidity_2m,precipitation_probability&timezone=${timezone}&forecast_days=${forecast}`;
-    console.log(url)
     
     try {
         const response = await fetch(url);

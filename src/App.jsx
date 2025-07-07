@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./App.module.css";
 import ToDoList from "./ToDoList/ToDoList";
+
+import fetchMeteoData from "./openMeteo/openMeteo";
 
 
 // To Do List
@@ -10,6 +12,10 @@ import ToDoList from "./ToDoList/ToDoList";
 // Calculator
 
 function App () {
+
+  useEffect(() => {
+    fetchMeteoData();
+  }, [])
   
   // To Do List
   

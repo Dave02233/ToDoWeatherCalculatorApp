@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './ListItem.module.css'
 
 
@@ -77,10 +78,11 @@ function ListItem ({ data, changeData, deleteData}) {
     }, [data]);
 
     return (
+        <>
         <div className={styles.ListItem}>
             <header>
                 { editState 
-                    ? <input onChange={handleTitleChange} name='Title' value={newData?.title || ''} />
+                    ? <input onChange={handleTitleChange} name='Title' maxLength={30} value={newData?.title || ''} />
                     : <h1>{newData?.title || ''}</h1>
                 }
             </header>
@@ -120,6 +122,8 @@ function ListItem ({ data, changeData, deleteData}) {
                         </>
                     )}
                 </section>
+
+            <Link className={styles.Link} to={'/forecast/' + newData?.id}>Meteo</Link>
             </section>
             <footer>
                 <button onClick={handleClickEdit}>{editState ? 'Salva' : 'Modifica'}</button>
@@ -127,6 +131,7 @@ function ListItem ({ data, changeData, deleteData}) {
                 <h6>Unique ID: {newData?.id || ''}</h6>
             </footer>
         </div>
+        </>
     );
 }
 

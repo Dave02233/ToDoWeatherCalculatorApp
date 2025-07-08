@@ -12,10 +12,6 @@ import fetchMeteoData from "./openMeteo/openMeteo";
 // Calculator
 
 function App () {
-
-  useEffect(() => {
-    fetchMeteoData();
-  }, [])
   
   // To Do List
   

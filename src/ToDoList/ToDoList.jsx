@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import ListItem from './components/ListItem'
 import styles from './ToDoList.module.css';
 
@@ -22,8 +23,8 @@ class toDoListItem {
     // Methods
 
     isExpired() {
-        const now = new Date();
-        return this.expirationDate < now;
+      const now = new Date();
+      return this.expirationDate < now;
     }
 
 }
@@ -70,7 +71,7 @@ function ToDoList (props) {
     setToDoListItems((prevToDoListItems) =>
       prevToDoListItems.map((item) =>
         item.id === id  
-            ?{ ...item, ...newData } // mantenere id originale
+            ?{ ...item, ...newData } // mantenere id originale per Dio
             : item
       )
     );
@@ -87,16 +88,17 @@ function ToDoList (props) {
 
   return (
     <>
-        <div className={styles.buttonContainer}>
-            <button className={styles.addToDoItem} onClick={handleClickAddToDo}>Aggiungi un evento</button>
-        </div>
-        <div className={styles.ToDoList}>
-            {
-                toDoListItems.length > 0
-                ? toDoListItems.map((listItem) => <ListItem key={listItem.id} data={listItem} changeData={changeData} deleteData={deleteData} /> )
-                : <p>Nessun evento in programma</p>
-            }
-        </div>
+      <Outlet context={{toDoListItems}}/>
+      <div className={styles.buttonContainer}>
+          <button className={styles.addToDoItem} onClick={handleClickAddToDo}>Aggiungi un evento</button>
+      </div>
+      <div className={styles.ToDoList}>
+          {
+              toDoListItems.length > 0
+              ? toDoListItems.map((listItem) => <ListItem key={listItem.id} data={listItem} changeData={changeData} deleteData={deleteData} /> )
+              : <p>Nessun evento in programma</p>
+          }
+      </div>
     </>
     )
 

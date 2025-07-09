@@ -1,5 +1,5 @@
 import styles from "./App.module.css";
-import Calculator from "./Calculator/Calculator";
+import CalculatorContainer from "./Calculator/Calculator";
 import ToDoList from "./ToDoList/ToDoList";
 
 
@@ -27,7 +27,7 @@ function App () {
         <h1>To Do - Weather - Calculator</h1>
       </header>
       <ToDoList /> 
-      <Calculator />
+      <CalculatorContainer />
     </>   
   );
 }

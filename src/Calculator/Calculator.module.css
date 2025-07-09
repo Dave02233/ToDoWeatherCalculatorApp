@@ -24,6 +24,116 @@
 
 .calculatorContainer {
     display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.595);
+
+    background-color: rgba(250, 235, 215, 0.92);
+
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid grey;
+    border-radius: 10px;
+
+    padding: 1rem;
+
+    position: fixed;
+    top: 5%;
+    right: 0%;
+
+    margin-right: 1rem;
+
+    .acc1 {
+        background-color: rgb(151, 147, 147);
+        color: black;
+    }
+
+    .numbers {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+        margin-top: 1rem;
+
+        font-size: 5rem;
+    }
+
+    .operators {
+        display: flex;
+        gap: 10px;
+        margin-top: 1rem;
+
+        font-size: 3rem;
+    }
+
+    .numbers button,
+    .operators button {
+        font-size: 1.5rem;
+        padding: 1rem;
+        width: 60px;
+        height: 60px;
+        margin: 5px;
+        border-radius: 8px;
+        background-color: #e0e0e0;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .numbers button:hover,
+    .operators button:hover {
+        background-color: #d0d0d0;
+    }
+
+
+    .delete {
+        background-color: rgb(214, 206, 200);
+        color: rgb(109, 39, 39);
+        font-size: 1.2rem;
+        width: 100%;
+
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        height: 1.5rem;
+
+        border: none;
+
+    
+    }
+
+    .close {
+        background-color: red;
+        color: white;
+
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        font-size: 1.2rem;
+        width: 100%;
+
+        padding: 0.2rem;
+
+        border: none;
+        border-radius: 10px;
+    }
+
+    input {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 1rem;
+        padding: 0.3rem;
+    }
+}
+
+.calculatorIconContainer {
+    display: flex;
 
     position: fixed;
     top: 50%;

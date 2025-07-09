@@ -1,0 +1,23 @@
+.calculatorVisibleButton {
+    display: flex;
+    border-radius: 10px;
+    width: 3rem;
+    height: 3rem;
+
+    padding: 0rem;
+
+    font-size: 0;
+
+    background-color: rgb(58, 56, 56);
+    border: 1px solid black;
+
+    background-image: url(/Calculator/VisibilityButton.png);
+    background-position: center;
+
+    box-shadow: 2px 2px 1px ;
+}
+
+.calculatorVisibleButton:hover {
+    background-color: rgb(87, 60, 60);
+
+}

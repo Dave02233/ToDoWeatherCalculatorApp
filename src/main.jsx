@@ -7,16 +7,12 @@ import Forecast from './openMeteo/Forecast'
 import NotFound from './NotFound'
 
 const router = createBrowserRouter([
-  { path: '/', 
-    element: <App />
-  },
-  { path: 'forecast/:id', 
+  {
+    path: '/',
     element: <App />,
     children: [
-      { path: '/forecast/:id',
-        element: <Forecast />
-      }
-    ] 
+      { path: 'forecast/:id', element: <Forecast /> }
+    ]
   },
   {
     path: '*',

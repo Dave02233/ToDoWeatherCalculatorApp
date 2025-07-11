@@ -41,10 +41,10 @@ export default function Articles() {
                     <div key={index}>
                         {
                             meteoData.precipitationProbabilityMax[index] > 25 ? 
-                            <img src='/Forecast/pioggia.png' />
+                            <img src={`${import.meta.env.BASE_URL}Forecast/pioggia.png`} />
                             : meteoData.precipitationProbabilityMax[index] <= 25 && meteoData.precipitationProbabilityMax[index] > 5 ?
-                            <img src='/Forecast/nuvolo.png' />
-                            :<img src='/Forecast/sole.png' />
+                            <img src={`${import.meta.env.BASE_URL}Forecast/nuvolo.png`} />
+                            :<img src={`${import.meta.env.BASE_URL}Forecast/sole.png`} />
                         }
                         <h3>{time.toISOString().split('T')[0]}</h3>
                         <hr />
